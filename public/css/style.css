@@ -1,5 +1,23 @@
 h1 {
     text-align: center;
-    color: cornflowerblue;
-  }
-  
+}
+
+h2 {
+    text-align: center;
+}
+
+img {
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    text-align: center;
+}
+
+button {
+    margin-left: auto;
+    margin-right: auto;
+}
