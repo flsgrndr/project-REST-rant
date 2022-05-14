@@ -37,4 +37,18 @@ router.get('/:id', (req, res) => {
   }
 })
 
+router.delete('/places/:id', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else {
+    place.splice (id, 1)
+    res.redirect('/places')
+  }
+})
+
 module.exports = router

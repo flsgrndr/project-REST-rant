@@ -35,12 +35,12 @@ function show (data) {
                     </button>
                   </form>
                 </div>
-              </div>
+            </div>
               <hr />
               <h2>Comments</h2>
               <div className="row">
                 No comments yet!
-            </div>
+              </div>
           </main>
         </Def>
     )
