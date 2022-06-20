@@ -9,8 +9,8 @@ function error404 () {
                 <div>
                     <img src="http://placekitten.com/600/600" alt="PlaceKitten" />
                 </div>
-
                 <p>Oops, sorry, we can't find this page!</p>
+                <a href="/"><button className="btn btn-primary">Home Page</button></a>
             </main>
         </Def>
     )
