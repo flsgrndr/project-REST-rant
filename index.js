@@ -20,10 +20,16 @@ app.get ('/', (req, res) => {
     res.render('home')
 })
 
+app.post('/', (req, res) => {
+    res.json(req.body)
+})
+
 //404 error route
 app.get ('*', (req, res) => {
     res.status(404).render('error404')
 })
 
 //Listen for Connections
-app.listen(PORT)
+app.listen(process.env.PORT, function () {
+    console.log("I am awake!");
+  });
