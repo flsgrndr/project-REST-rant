@@ -15,13 +15,15 @@ app.use(methodOverride('_method'))
 //Controllers & Routes
 app.use ('/places', require ('./controllers/places'))
 
+//home route
 app.get ('/', (req, res) => {
     res.render('home')
 })
 
+//404 error route
 app.get ('*', (req, res) => {
     res.status(404).render('error404')
 })
 
 //Listen for Connections
-app.listen(process.env.PORT)
+app.listen(PORT)
