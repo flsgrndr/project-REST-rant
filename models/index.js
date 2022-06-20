@@ -1,12 +1,12 @@
 require('dotenv').config();
-const mongoose = require('mongoose');
+import { connect } from 'mongoose';
 
 //DATABASE
 const mongooseURI = process.env.MONGO_URI;
 
-mongoose.connect(mongooseURI, {useNewUrlParser: true, useUnifiedTopology: true},
+connect(mongooseURI, {useNewUrlParser: true, useUnifiedTopology: true},
     () => {console.log('connected to mongo: ', mongooseURI)}
 )
 
-module.exports.Place = require('./places');
-module.exports.Comment = require('./comment');
+export const Place = require('./places').default;
+export const Comment = require('./comment').default;

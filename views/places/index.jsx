@@ -1,5 +1,5 @@
-const React = require ('react')
-const Def = require ('../default')
+import React from 'react'
+import Def from '../default'
 
 function index (data) {
     let placesFormatted = data.places.map ((place) => {
@@ -32,4 +32,4 @@ function index (data) {
     )
 }
 
-module.exports = index
+export default index

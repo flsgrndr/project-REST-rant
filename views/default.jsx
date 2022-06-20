@@ -1,4 +1,4 @@
-const React = require('react')
+import React from 'react'
 
 function Def (html) {
     return (
@@ -28,4 +28,4 @@ function Def (html) {
     )
 }
 
-module.exports = Def
+export default Def

@@ -1,5 +1,5 @@
-const React = require ('react')
-const Def = require ('./default')
+import React from 'react'
+import Def from './default'
 
 function home () {
     return (
@@ -20,4 +20,4 @@ function home () {
     )
 }
 
-module.exports = home
+export default home

@@ -1,9 +1,9 @@
 const router = require('express').Router()
-const db = require('../models')
+import { Place, Comment } from '../models'
 
 //get places
 router.get('/', (req, res) => {
-  db.Place.find()
+  Place.find()
     .then((places) => {
       res.render('places/index', {places})
     })
@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
   if (req.body.pic === '') {req.body.pic = undefined}
   if (req.body.city === '') {req.body.city = undefined}
   if (req.body.state === '') {req.body.state = undefined}
-  db.Place.create(req.body)
+  Place.create(req.body)
     .then(() => {
       res.redirect('/places');
     })
@@ -45,7 +45,7 @@ router.get('/new', (req, res) => {
 
 //get show places
 router.get('/:id', (req, res) => {
-  db.Place.findById(req.params.id)
+  Place.findById(req.params.id)
   .populate('comments')
   .then(place => {
     console.log(place.comments)
@@ -59,7 +59,7 @@ router.get('/:id', (req, res) => {
 
 //put edit places
 router.put('/:id', (req, res) => {
-  db.Place.findByIdAndUpdate(req.params.id, req.body, {runValidators: true})
+  Place.findByIdAndUpdate(req.params.id, req.body, {runValidators: true})
       .then(() => {
           res.redirect(`/places/${req.params.id}`)
       })
@@ -71,7 +71,7 @@ router.put('/:id', (req, res) => {
 
 //delete places
 router.delete('/:id', (req, res) => {
-  db.Place.findByIdAndDelete(req.params.id)
+  Place.findByIdAndDelete(req.params.id)
       .then(() => {
           res.redirect('/places')
       })
@@ -83,7 +83,7 @@ router.delete('/:id', (req, res) => {
 
 //get edit places
 router.get('/:id/edit', (req, res) => {
-  db.Place.findById(req.params.id)
+  Place.findById(req.params.id)
       .then(place => {
           res.render('places/edit', { place })
       })
@@ -97,9 +97,9 @@ router.post('/:id/comment', (req, res) => {
   console.log('post comment', req.body)
   if (req.body.author === '') { req.body.author = undefined }
     req.body.rant = req.body.rant ? true : false
-    db.Place.findById(req.params.id)
+    Place.findById(req.params.id)
         .then(place => {
-            db.Comment.create(req.body)
+            Comment.create(req.body)
                 .then(comment => {
                     place.comments.push(comment.id)
                     place.save()
@@ -121,7 +121,7 @@ router.post('/:id/comment', (req, res) => {
 
 //delete comment from place
 router.delete('/:id/comment/:commentId', (req, res) => {
-  db.Comment.findByIdAndDelete(req.params.commentId)
+  Comment.findByIdAndDelete(req.params.commentId)
         .then(() => {
             console.log('Success')
             res.redirect(`/places/${req.params.id}`)
@@ -131,4 +131,4 @@ router.delete('/:id/comment/:commentId', (req, res) => {
         })
 })
 
-module.exports = router
+export default router

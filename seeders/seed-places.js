@@ -1,6 +1,6 @@
-const db = require('../models')
+import { Place } from '../models'
 
-db.Place.create([{
+Place.create([{
     name: 'H-Thai-ML',
     city: 'Seattle',
     state: 'WA',

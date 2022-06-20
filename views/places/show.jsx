@@ -1,5 +1,5 @@
-const React = require('react')
-const Def = require('../default')
+import React from 'react'
+import Def from '../default'
 
 function show (data) {
   let comments = (
@@ -116,4 +116,4 @@ function show (data) {
   )
 }
 
-module.exports = show
+export default show
