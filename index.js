@@ -1,35 +1,31 @@
-//Modules and Globals
-require ('dotenv').config()
-const express = require ('express')
-const app = express()
-const methodOverride = require('method-override')
+//modules and globals
+require('dotenv').config();
+const express = require('express');
+const app = express();
+const methodOverride = require('method-override');
+const PORT = process.env.PORT;
 
-//Express Settings
-app.set ('views', __dirname + '/views')
-app.set ('view engine', 'jsx')
-app.engine ('jsx', require ('express-react-views').createEngine())
-app.use (express.static ('public'))
-app.use(express.urlencoded({ extended: true }))
-app.use(methodOverride('_method'))
+//middleware
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
+//middleware for public folder -- css and image files
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
-//Controllers & Routes
-app.use ('/places', require('./controllers/places').default)
+
+//routes
+app.use('/places', require('./controllers/places'));
 
 //home route
-app.get ('/', (req, res) => {
-    res.render('home')
-})
-
-app.post('/', (req, res) => {
-    res.json(req.body)
+app.get('/', (req, res) =>{
+    res.render('home');
 })
 
 //404 error route
-app.get ('*', (req, res) => {
-    res.status(404).render('error404')
+app.get('*', (req, res) => {
+    res.render('error404');
 })
 
-//Listen for Connections
-app.listen(process.env.PORT || 3000, function () {
-    console.log("I am awake!");
-  });
+app.listen(PORT);

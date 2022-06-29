@@ -1,5 +1,5 @@
-import React from 'react'
-import Def from '../default'
+const React = require('react')
+const Def = require('../default')
 
 function new_form (data) {
     let message = ''
@@ -75,4 +75,4 @@ function new_form (data) {
         )
 }
 
-export default new_form
+module.exports = new_form

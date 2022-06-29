@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose'
+const mongoose = require('mongoose')
 
-const placeSchema = new Schema({
+const placeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   pic: { type: String, default: 'http://placekitten.com/350/350' },
   cuisines: { type: String, required: true },
@@ -11,11 +11,11 @@ const placeSchema = new Schema({
     min: [1673, 'Surely not that old?!'],
     max: [new Date().getFullYear(), 'Hey, this year is in the future!']
   },
-  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+  comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
 })
 
 placeSchema.methods.showEstablished = function() {
   return `${this.name} has been serving ${this.city}, ${this.state} since ${this.founded}.`
 }
 
-export default model('Place', placeSchema)
+module.exports = mongoose.model('Place', placeSchema)

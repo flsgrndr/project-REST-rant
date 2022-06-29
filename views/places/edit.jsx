@@ -1,5 +1,5 @@
-import React from 'react'
-import Def from '../default'
+const React = require('react')
+const Def = require('../default')
 
 function edit_form (data) {
     return (
@@ -69,4 +69,4 @@ function edit_form (data) {
     )
 }
 
-export default edit_form
+module.exports = edit_form
