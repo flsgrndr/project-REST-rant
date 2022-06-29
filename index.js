@@ -28,4 +28,4 @@ app.get('*', (req, res) => {
     res.render('error404');
 })
 
-app.listen(PORT);
+app.listen(process.env.PORT);
