@@ -9,7 +9,6 @@ const PORT = process.env.PORT;
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
-//middleware for public folder -- css and image files
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -28,4 +27,4 @@ app.get('*', (req, res) => {
     res.render('error404');
 })
 
-app.listen(process.env.PORT);
+app.listen(PORT);

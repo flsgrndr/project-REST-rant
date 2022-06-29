@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
           message+= `${field} was ${err.errors[field].value}.`
           message+= `${err.errors[field].message}`
         }
-        console.log('Validation errore message', message)
+        console.log('Validation error message', message)
         res.render('places/new', {message})
       }
       else{
@@ -128,4 +128,4 @@ router.delete('/:id/comment/:commentId', (req, res) => {
         })
 })
 
-module.exports = router
+module.exports = router;
